@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProgressBar from "./widgets/ProgressBar";
 import { parseInteger } from "../utils";
 import { useSelector } from "react-redux";
@@ -16,6 +16,15 @@ import {
 
 export default function FleetCard() {
   const state = useSelector((state) => state);
+
+  const navigate = useNavigate();
+
+  const goToReceiver = function (index, name) {
+    navigate("/overview", {
+      state: { id: index, name: name },
+    });
+  };
+
   return (
     <Container>
       {state.fleet.length !== 0 && (
@@ -23,11 +32,9 @@ export default function FleetCard() {
           {state.fleet.map((starship, index) => {
             return (
               <CardContainer key={index}>
-                <Link to="overview/">
-                  <Icon>
-                    <StyledLogo />
-                  </Icon>
-                </Link>
+                <Icon onClick={() => goToReceiver(index, starship.name)}>
+                  <StyledLogo />
+                </Icon>
 
                 <InfoContainer>
                   <InfoName>{starship.name}</InfoName>

@@ -1,14 +1,15 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { parseInteger } from "../../utils";
 import { Container, Header, Text } from "./ProgressBar.styles";
 
 /**
  * ProgressBar par comment
  */
 function ProgressBar({ max, usage }) {
-  const maxCapacity = parseInt(max); // for the maximu( crew +passagers)
-  const capacityUsed = parseInt(usage); // the capacity used
-  var width = parseInt((capacityUsed / maxCapacity) * 100);
+  const maxCapacity = parseInteger(max); // for the maximu( crew +passagers)
+  const capacityUsed = parseInteger(usage); // the capacity used
+  var width = parseInteger((capacityUsed / maxCapacity) * 100);
   if (width > 100) width = 100;
 
   var color = "green";
