@@ -1,4 +1,5 @@
 import tw, { styled } from "twin.macro";
+import ProgressBar from "./components/widgets/ProgressBar";
 
 export const Container = styled.div`
   ${tw`
@@ -10,7 +11,7 @@ export const Container = styled.div`
 function App() {
   return (
     <Container>
-      <h1>Hello World Starward fun</h1>
+      <ProgressBar max="400" usage="360" />
     </Container>
   );
 }
