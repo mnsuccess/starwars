@@ -1,18 +1,15 @@
-import tw, { styled } from "twin.macro";
-import ProgressBar from "./components/widgets/ProgressBar";
-
-export const Container = styled.div`
-  ${tw`
-        mx-10 my-10 min-h-screen  grid gap-10 sm:grid-cols-1 md:grid-cols-2 bg-white
-        relative md:fixed  inset-0 mb-10 p-32
-    `}
-`;
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./components/pages/Home";
+import Overview from "./components/pages/Overview";
 
 function App() {
   return (
-    <Container>
-      <ProgressBar max="400" usage="360" />
-    </Container>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/overview" exact element={<Overview />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
