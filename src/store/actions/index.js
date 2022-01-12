@@ -31,7 +31,6 @@ export const addFavoriteStarship = (data) => {
       model: data.model,
       starship_class: data.starship_class,
       manufacturer: data.manufacturer,
-
       crew: data.crew,
       passengers: data.passengers,
       userPassengers: [],

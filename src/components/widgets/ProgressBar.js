@@ -37,8 +37,8 @@ ProgressBar.defaultProps = {
 };
 
 ProgressBar.propTypes = {
-  max: PropTypes.string.isRequired,
-  usage: PropTypes.string.isRequired,
+  max: PropTypes.any,
+  usage: PropTypes.any,
 };
 
 export default ProgressBar;

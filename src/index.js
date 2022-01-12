@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
 import rootReducer from "./store/reducers";
-//import { fetchData } from "./store/actions";
+import { fetchData } from "./store/actions";
 
 /**
  * Save the state in the local storage (user fleet)
@@ -42,7 +42,7 @@ const initialState = getState();
 
 //create the store
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
-//store.dispatch(fetchData());
+store.dispatch(fetchData());
 
 //subscribe to the store for any change regardless user fleet
 store.subscribe(() => {
