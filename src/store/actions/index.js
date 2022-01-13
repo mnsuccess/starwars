@@ -7,6 +7,8 @@ import {
 
 import axios from "axios";
 
+import toast from "react-hot-toast";
+
 /*
 https://swapi.dev/api/starships or people
 view the star war API https://swapi.dev/documentatio
@@ -24,6 +26,7 @@ const endpoints = {
  * @returns
  */
 export const addFavoriteStarship = (data) => {
+  toast.success("Starship successfully added ");
   return {
     type: ADD_FAVORITE_STARSHIP,
     payload: {
@@ -73,6 +76,7 @@ export const fetchSearchData = (param) => {
         });
       })
       .catch((error) => {
+        toast.error("Unable to fetch data to server ");
         throw error;
       });
   };
@@ -98,6 +102,7 @@ export const fetchData = () => {
         });
       })
       .catch((error) => {
+        toast.error("Unable to fetch data to server ");
         throw error;
       });
   };

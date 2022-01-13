@@ -4,6 +4,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+The app is using the [StarWard API](https://swapi.dev/documentation#intro)
+
 ## How to Run this app
 
 In the project directory, you can run:
@@ -29,3 +31,7 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Warning
+
+The Starward API endpoint might be down from time to time. Please be patient or try the application at a later stagee.

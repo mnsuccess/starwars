@@ -21,7 +21,7 @@ export const RightSideContainer = styled.div`
 
 export const DetailShipInfo = styled.div`
   ${tw`
-        mt-10
+        mt-10 bg-white shadow shadow-lg p-10 rounded-lg
     `}
 `;
 
