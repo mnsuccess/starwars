@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { parseInteger } from "../../utils";
 import { removeFavoriteStarship } from "../../store/actions";
+import { Toaster } from "react-hot-toast";
 import {
   Container,
   LeftSideContainer,
@@ -13,10 +14,12 @@ import {
   MainTitle,
 } from "./Overview.styles";
 import ProgressBar from "../widgets/ProgressBar";
+import FleetPassagerInput from "../FleetPassagerInput";
+import PeopleCard from "../PeopleListCard";
 
 function Overview() {
-  //console.log(starship);
   const [starship, setStarship] = useState({});
+  const [passengers, SetPassengers] = useState([]);
   const local_state = useSelector((state) => state);
   const { state } = useLocation();
   const dispatch = useDispatch();
@@ -36,8 +39,15 @@ function Overview() {
     }
   }, [navigate]);
 
+  useEffect(() => {
+    if (Object.keys(starship).length !== 0) {
+      SetPassengers(starship.userPassengers);
+    }
+  });
+
   return (
     <Container>
+      <Toaster />
       <LeftSideContainer>
         <MainTitle>Detail View</MainTitle>
         <DetailShipInfo>
@@ -58,6 +68,21 @@ function Overview() {
             <h4>Manufacturer</h4>
             <p> {starship.manufacturer}</p>
           </DetailShipInfoGrid>
+
+          <DetailShipInfoGrid>
+            <h4>Passengers Capacity</h4>
+            <p> {parseInteger(starship.passengers)}</p>
+          </DetailShipInfoGrid>
+          <DetailShipInfoGrid>
+            <h4>Crew Capacity</h4>
+            <p> {parseInteger(starship.crew)}</p>
+          </DetailShipInfoGrid>
+
+          <DetailShipInfoGrid>
+            <h4>Passengers on board</h4>
+            <p> {passengers.length}</p>
+          </DetailShipInfoGrid>
+
           <DetailShipInfoGrid>
             <h4> </h4>
             <Button
@@ -70,14 +95,15 @@ function Overview() {
             </Button>
           </DetailShipInfoGrid>
         </DetailShipInfo>
+        <FleetPassagerInput starship={starship} />
       </LeftSideContainer>
       <RightSideContainer>
         <h4>Capacity</h4>
-
         <ProgressBar
           max={parseInteger(starship.passengers) + parseInteger(starship.crew)}
-          usage="0"
+          usage={passengers.length}
         />
+        <PeopleCard starship={starship} />
       </RightSideContainer>
     </Container>
   );
